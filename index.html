@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Turismo</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app-3">
+        {{ sub }}
+    </div>
+
+    <div id="app-2">
+       <ol>
+           <li v-for="msg in bucl">
+             {{ msg.message }}
+           </li>
+       </ol>
+      </div>
+
+    <div id="app-4">
+       <p> Escribe tu hobbie</p>
+
+       <input v-model="cosa" placeholder="text"/>
+       <p>{{cosa}}</p>
+
+       <br>
+
+
+    </div>
+
+    <div id="hide">
+      <button class="btn btn-primary" v-on:click="isHidden = !isHidden">Show/hidden</button>
+
+      <p v-if="!isHidden"><img style="width:600px;height:500px" v-bind:src="imag">
+  </p>
+    </div>
+
+		<script>
+
+    Vue.createApp({
+      data(){
+        return{
+          imag:'https://i.stack.imgur.com/6M513.png',
+      },
+			methods:{
+				display: function(){
+					this.seen = !this.seen;
+				}
+			}
+    }).mount('#hide')
+
+
+    Vue.createApp({
+      data(){
+        return{
+          message: 'Hello Luis!'
+        }
+      }
+    }).mount('#app')
+
+    Vue.createApp({
+      data(){
+        return{
+          bucl:[
+              { message:"Jugar video juegos"  },
+              { message:"Tocar la guitarra" },
+              { message:'Redes sociales' },
+              { message:'Entrenar calistenia' }
+          ]
+        }
+      }
+    }).mount('#app-2')
+
+    Vue.createApp({
+      data(){
+        return{
+          sub:'Pasatiempos'
+        }
+      }
+    }).mount('#app-3')
+
+    Vue.createApp({
+      data(){
+        return{
+          cosa: '',
+        }
+      }
+    }).mount('#app-4')
+
+
+
+
+
+		</script>
+	</body>
+</html>
